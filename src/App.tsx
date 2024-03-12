@@ -44,12 +44,6 @@ function App() {
 	)
 }
 
-interface IInputValues {
-	type: ParamType
-	name: string
-	value: string
-}
-
 const AddParamForm = ({ addParam }: AddParamFormProps) => {
 	const [inputValues, setInputValues] = useState<IInputValues>({
 		type: "string",
@@ -195,7 +189,7 @@ const TextField = ({
 	)
 }
 
-export const useParamHooks = (model: Model, dataParams: Param[]) => {
+const useParamHooks = (model: Model, dataParams: Param[]) => {
 	// совмещаем value хранящиеся в Model с её параметрами хранящимися в Params
 	// и получаем данные в нужном виде в котором будем отрисовывать на странице
 
@@ -247,21 +241,21 @@ export const useParamHooks = (model: Model, dataParams: Param[]) => {
 	}
 }
 
-export type ParamTypes = ["string", "number", "select"]
-export type ParamType = ParamTypes[number]
+type ParamTypes = ["string", "number", "select"]
+type ParamType = ParamTypes[number]
 
-export interface Param {
+interface Param {
 	id: number
 	name: string
 	type: ParamTypes[number]
 }
 
-export interface Model {
+interface Model {
 	paramValues: ParamValue[]
 	// colors: Color[];
 }
 
-export interface ParamValue {
+interface ParamValue {
 	paramId: number
 	value: string
 }
@@ -285,6 +279,12 @@ interface ParamListProps {
 }
 interface AddParamFormProps {
 	addParam: (param: EditorParam) => void
+}
+
+interface IInputValues {
+	type: ParamType
+	name: string
+	value: string
 }
 
 export default App
