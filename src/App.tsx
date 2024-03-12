@@ -44,8 +44,6 @@ function App() {
 	)
 }
 
-export default App
-
 interface IInputValues {
 	type: ParamType
 	name: string
@@ -288,3 +286,5 @@ interface ParamListProps {
 interface AddParamFormProps {
 	addParam: (param: EditorParam) => void
 }
+
+export default App
